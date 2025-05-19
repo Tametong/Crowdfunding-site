@@ -1,0 +1,28 @@
+{% extends 'crowdfounding/base.html' %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-5 text-green-500">Projets à financer</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for project in projects %}
+    <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl mb-3 font-semibold">{{ project.title }}</h2>
+        <p>Description du projet: span{{ project.description|truncatewords:30 }}</p>
+        <p>Financement attendu: <span class="font-bold">{{ project.goal_amount }} Fcfa</span></p>
+        <p class="mb-5">Déja reçu: <span class="text-green-500 font-bold">{{ project.current_amount }} Fcfa</span></p>
+        
+        <a href="{% url 'project_detail' project.pk %}" class="flex items-center content-center text-green-500 border border-green-500 py-2 px-6 gap-2 rounded inline-flex " my-4>
+            <span>
+                Voir les détails/contribuer
+            </span>
+            <svg class="w-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                viewBox="0 0 24 24" class="w-6 h-6 ml-2">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+        </a>
+        
+    </div>
+    {% empty %}
+    <p>No projects available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'crowdfounding/base.html' %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-green-500 my-4">Créer un nouveau projet</h1>
+<form method="post" class="space-y-4">
+    {% csrf_token %}
+    <form  method="post">
+
+        <label for="title">Titre</label>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="relative bg-inherit">
+                <input type="text" id="" name="title" class="peer bg-transparent h-10 w-72 rounded-lg text-black placeholder-transparent ring-2 px-2 ring-green-500 focus:green-500 focus:outline-none focus:border-rose-600" placeholder="Tire"/><label for="contribution" class="absolute cursor-text left-0 -top-3 text-sm text-black bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-green-500 peer-focus:text-sm transition-all">Titre</label>
+            </div>
+        </div>
+        <label for="description">Description</label>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="relative bg-inherit">
+                <textarea type="text" id="" name="description" class="peer bg-transparent h-10 w-72 rounded-lg text-black placeholder-transparent ring-2 px-2 ring-green-500 focus:green-500 focus:outline-none focus:border-rose-600" placeholder="Description"></textarea><label for="contribution" class="absolute cursor-text left-0 -top-3 text-sm text-black bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-green-500 peer-focus:text-sm transition-all">Description</label>
+            </div>
+        </div>
+        <label for="goal_amount">Montant attendu</label>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="relative bg-inherit">
+                <input type="number" id="" name="goal_amount" class="peer bg-transparent h-10 w-72 rounded-lg text-black placeholder-transparent ring-2 px-2 ring-green-500 focus:green-500 focus:outline-none focus:border-rose-600" placeholder="Montant"/><label for="contribution" class="absolute cursor-text left-0 -top-3 text-sm text-black bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-green-500 peer-focus:text-sm transition-all">Montant</label>
+            </div>
+        </div>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Créer</button>
+    </form>
+    
+</form>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+   <form  method="post">
+        {% csrf_token %}
+    
+
+        <div class="flex h-screen items-center justify-center">
+            <div class="flex flex-col items-center space-y-8">
+        
+                <div class="w-80 rounded-[20px] bg-white p-8" style="box-shadow:#00000057 1px 3px 4px">
+                    <h1 class="mb-4 text-center text-3xl font-bold text-black" style="text-shadow:#00000063 0px 3px 5px">
+                        Welcome Back !
+                    </h1>
+                    <h1 class="text-red-800 text-center my-3">{{error}}</h1>
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Username" name="username"
+                            class="w-full rounded-md bg-[#E9EFF6] p-2.5 placeholder:text-[#000000]"
+                            style="box-shadow:rgb(0 0 0 / 21%) 0px 7px 5px 0px" required/>
+                        <input type="password" placeholder="Password" name="password"
+                            class="w-full rounded-md bg-[#E9EFF6] p-2.5 placeholder:text-[#000000]"
+                            style="box-shadow:rgb(0 0 0 / 21%) 0px 7px 5px 0px" required />
+                    </div>
+        
+                    <div class="mb-4 mt-4 flex justify-center">
+                        <button type="submit"
+                            class="h-10 w-full cursor-pointer rounded-md bg-green-500 text-white shadow-md shadow-blue-950">
+                            Se connecter
+                        </button>
+                    </div>
+                    <div class="text-center text-[#969696]">
+                        Vous n'avez pas de compte?
+                        <a class="cursor-pointer text-green-500 hover:underline" href="{% url "signup" %}">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </form>
+    </div>
+</body>
+</html>

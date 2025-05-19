@@ -1,0 +1,46 @@
+{% extends 'crowdfounding/base.html' %}
+
+{% block content %}
+<h1 class="text-2xl font-bold text-green-500 my-5">{{ project.title }}</h1>
+<p class="py-3">Description: {{ project.description }}</p>
+<p class="pb-3">Financement attendu: {{ project.goal_amount }} Fcfa</p>
+<p>Déja reçu: {{ project.current_amount }} Fcfa</p>
+<p class="py-3">Créer par: {{ project.creator.username }}</p>
+{% if user.is_authenticated %}
+    <a href="{% url 'contribute' project.pk %}" class="bg-green-500 my-5 text-white px-4 py-2 rounded">Contribuer</a>
+{% else %}
+    <button type="button" class="py-2 px-4 max-w-md flex justify-center items-center bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+    <a href="{% url 'login' %}">Connectez vous pour contribuer</a> 
+    </button>
+    <div class="bg-green-500 py-2 px-4 rounded-md text-white text-center fixed bottom-4 right-4 flex gap-4">
+    <p>Connectez vous pour contribuer.</p>
+    <span class="cursor-pointer font-bold" onclick="return this.parentNode.remove()"><sup>X</sup></span>
+</div>
+{% endif %}
+<h2 class="text-2xl text-green-500 font-semibold mt-5 mb-4">Contributions pour ce projet</h2>
+
+
+
+<table class="w-full border-collapse border border-green-500 max-w-xl mt-"" mx-auto">
+  <thead>
+    <tr class="bg-green-500 text-white">
+      <th class="py-2 px-4 text-left">Donnateur</th>
+      <th class="py-2 px-4 text-left">Montant(Fcfa)</th>
+      <th class="py-2 px-4 text-left">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contribution in contributions %}
+    <tr class="bg-white border-b border-green-500">
+      <td class="py-2 px-4">{{ contribution.contributor.username }}</td>
+      <td class="py-2 px-4">{{ contribution.amount }}</td>
+      <td class="py-2 px-4">{{ contribution.created_at|date:"d/m/Y à H:i" }}</td>
+    </tr>
+    {% empty %}
+    <p class='text-xl text-red-800'>Aucune contribution pour le moment😟</p>
+    {% endfor %}
+  </tbody>
+</table>
+
+ 
+{% endblock %}
