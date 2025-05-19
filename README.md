@@ -48,5 +48,4 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
-### Ce projet est sous licence MIT.
 
